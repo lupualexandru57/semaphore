@@ -1,5 +1,5 @@
 - name: Reboot MikroTik
-  hosts: mikrotik_inventory
+  hosts: mikrotik
   gather_facts: no
 
   tasks:
