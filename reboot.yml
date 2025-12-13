@@ -1,0 +1,7 @@
+- name: Reboot MikroTik
+  hosts: mikrotik
+  gather_facts: no
+
+  tasks:
+    - name: Send reboot command
+      ansible.builtin.raw: /system reboot skip-backup=yes
