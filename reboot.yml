@@ -5,3 +5,4 @@
   tasks:
     - name: Send reboot command
       ansible.builtin.raw: /system identity print
+      quit
