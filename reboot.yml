@@ -4,4 +4,4 @@
 
   tasks:
     - name: Send reboot command
-      ansible.builtin.raw: /system reboot skip-backup=yes
+      ansible.builtin.raw: /system identity print
