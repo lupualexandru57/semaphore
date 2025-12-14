@@ -8,7 +8,7 @@
     ansible_network_os: routeros
     ansible_user: "{{ lookup('env', 'MIKROTIK_USER') }}"
     ansible_password: "{{ lookup('env', 'MIKROTIK_PASS') }}"
-    ansible_port: "{{ lookup('env', 'MIKROTIK_PORT') | default(22) }}"
+    #ansible_port: "{{ lookup('env', 'MIKROTIK_PORT') | default(22) }}"
 
   tasks:
     - name: Afiseaza identity
