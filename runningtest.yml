@@ -1,0 +1,42 @@
+---
+- name: Ruleaza comenzi pe MikroTik
+  hosts: mikrotik
+  gather_facts: no
+  connection: network_cli
+
+  vars:
+    ansible_network_os: routeros
+    ansible_user: "{{ lookup('env', 'MIKROTIK_USER') }}"
+    ansible_password: "{{ lookup('env', 'MIKROTIK_PASS') }}"
+    ansible_port: "{{ lookup('env', 'MIKROTIK_PORT') | default(22) }}"
+
+  tasks:
+    - name: Afiseaza identity
+      routeros_command:
+        commands:
+          - /system identity print
+      register: identity_output
+
+    - name: Afiseaza resurse
+      routeros_command:
+        commands:
+          - /system resource print
+      register: resource_output
+
+    - name: Afiseaza IP-uri
+      routeros_command:
+        commands:
+          - /ip address print brief
+      register: ip_output
+
+    - name: Output identity
+      debug:
+        var: identity_output.stdout_lines
+
+    - name: Output resurse
+      debug:
+        var: resource_output.stdout_lines
+
+    - name: Output IP-uri
+      debug:
+        var: ip_output.stdout_lines
